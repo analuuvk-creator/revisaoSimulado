@@ -18,7 +18,7 @@ class ProdutoEdit extends Component
         $produto = Produto::find($id);
 
         if ($produto == null) {
-            session()->flash('error', 'não encontrado');
+            session()->flash('error', 'Não encontrado');
             return redirect()->route('produto.index');
         }
 
@@ -30,8 +30,25 @@ class ProdutoEdit extends Component
     }
 
     public function update() {
-        $produto = Produto::find();
+        $produto = Produto::find($this->produto_id);
+
+        if ($produto == null) {
+            session()->flash('error', 'Não encontrado');
+            return redirect()->route('produto.index');
+        }
+
+        $produto->nome = $this->nome;
+        $produto->valor = $this->valor;
+        $produto->qtd_estoque = $this->qtd_estoque;
+        $produto->qtd_minima = $this->qtd_minima;
+
+        $produto->save();
+
+        session()->flash('success', 'Atualizado');
+            return redirect()->route('produto.index');
     }
+
+    
     public function render()
     {
         return view('livewire.produto.produto-edit');
