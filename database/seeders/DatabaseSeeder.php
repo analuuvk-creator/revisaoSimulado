@@ -24,21 +24,21 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Produto::create([
-            'name' => 'Martelo',
+            'nome' => 'Martelo',
             'valor' => 50.00,
             'qtd_estoque' => 100,
             'qtd_minima' => 10
         ]);
 
         Produto::create([
-            'name' => 'Chave Inglesa',
+            'nome' => 'Chave Inglesa',
             'valor' => 30.00,
             'qtd_estoque' => 10,
             'qtd_minima' => 10
         ]);
 
         Produto::create([
-            'name' => 'Serrote Universal',
+            'nome' => 'Serrote Universal',
             'valor' => 150.00,
             'qtd_estoque' => 5,
             'qtd_minima' => 10

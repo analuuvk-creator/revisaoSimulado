@@ -12,7 +12,7 @@
         @if ($alertaEstoqueBaixo)
             <div class="alert alert-warning">{{ $alertaEstoqueBaixo }}</div>
         @endif
-
+ 
         <div class="card mb-4">
             <div class="card-header">
                 <h5>Registrar Movimentação de Estoque</h5>
@@ -40,8 +40,8 @@
                             <div class="mb-3">
                                 <label class="form-label">Tipo</label>
                                 <select class="form-select" wire:model='tipo'>
-                                    <option value="">Entrada</option>
-                                    <option value="">Saída</option>
+                                    <option value="entrada">Entrada</option>
+                                    <option value="saída">Saída</option>
                                 </select>
                             </div>
                         </div>
