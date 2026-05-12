@@ -15,11 +15,11 @@ class Movimentacao extends Model
         'user_id'
     ];
 
-    public function produtos(): BelongsTo {
+    public function produto(): BelongsTo {
         return $this->belongsTo(Produto::class);
     }
 
-    public function users(): BelongsTo {
+    public function user(): BelongsTo {
         return $this->belongsTo(User::class);
     }
 }

@@ -1,16 +1,16 @@
 <div class="mt-5">
     @if (session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
     @endif
 
     @if (session()->has('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
     @endif
-    
+
     <div class="mb-3">
         <input type="text" wire:model.live='search' placeholder="Pesquisar..." class="form-control">
     </div>
@@ -28,16 +28,21 @@
         </thead>
         <tbody>
             @foreach ($movimentacaos as $m)
-                <tr>
-                    <th scope="row">{{ $m->produto_id }}</th>
-                    <td>{{ $m->tipo }}</td>
-                    <td>{{ $m->quantidade }}</td>
-                    <td>{{ $m->user_id }}</td>
-                    <td>{{ $m->data_movimentacao }}</td>
-                    <td>
-                        <button wire:click='delete({{ $m->produto_id }})' class="btn btn-sm btn-danger">Excluir</button>
-                    </td>
-                </tr>
+            <tr>
+                <th scope="row">{{ $m->produto_id }} - {{ $m->produto->nome }}</th>
+                <td> @if ($m->tipo == 'entrada')
+                    <span class="badge bg-primary">Entrada</span>
+                    @else
+                    <span class="badge bg-danger">Saída</span>
+                    @endif
+                </td>
+                <td>{{ $m->quantidade }}</td>
+                <td>{{ $m->user_id }} - {{ $m->user->name }}</td>
+                <td>{{ \Carbon\Carbon::parse($m->data_movimentacao)->format('d/m/Y') }}</td>
+                <td>
+                    <button wire:click='delete({{ $m->produto_id }})' class="btn btn-sm btn-danger">Excluir</button>
+                </td>
+            </tr>
             @endforeach
         </tbody>
     </table>
